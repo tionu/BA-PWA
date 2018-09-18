@@ -2,6 +2,9 @@ import {Component, ViewChild} from '@angular/core';
 import {Nav, Platform} from 'ionic-angular';
 
 import {HomePage} from '../pages/home/home';
+import {ScannerPage} from "../pages/scanner/scanner";
+import {StammdatenPage} from "../pages/stammdaten/stammdaten";
+import {MedikationsplanPage} from "../pages/medikationsplan/medikationsplan";
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +21,10 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      {title: 'Home', component: HomePage},
+      {title: 'Start', component: HomePage},
+      {title: 'QR scannen...', component: ScannerPage},
+      {title: 'Stammdaten', component: StammdatenPage},
+      {title: 'Medikationsplan', component: MedikationsplanPage},
     ];
 
   }
