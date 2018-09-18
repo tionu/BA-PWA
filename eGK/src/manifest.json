@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "Gesundheitskarte",
+  "short_name": "eGK",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
