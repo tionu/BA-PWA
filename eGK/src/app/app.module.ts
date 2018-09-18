@@ -9,7 +9,8 @@ import {StammdatenPage} from "../pages/stammdaten/stammdaten";
 import {MedikationsplanPage} from "../pages/medikationsplan/medikationsplan";
 import {GatewayConnectorProvider} from '../providers/gateway-connector/gateway-connector';
 import {TransientStoreProvider} from '../providers/transient-store/transient-store';
-import {HttpClient} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
+import {CryptoControllerPage} from "../pages/crypto-controller/crypto-controller";
 
 @NgModule({
   declarations: [
@@ -17,11 +18,12 @@ import {HttpClient} from "@angular/common/http";
     HomePage,
     ScannerPage,
     StammdatenPage,
-    MedikationsplanPage
+    MedikationsplanPage,
+    CryptoControllerPage
   ],
   imports: [
     BrowserModule,
-    HttpClient,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -30,7 +32,8 @@ import {HttpClient} from "@angular/common/http";
     HomePage,
     ScannerPage,
     StammdatenPage,
-    MedikationsplanPage
+    MedikationsplanPage,
+    CryptoControllerPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
