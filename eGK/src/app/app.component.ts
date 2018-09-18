@@ -5,6 +5,7 @@ import {HomePage} from '../pages/home/home';
 import {ScannerPage} from "../pages/scanner/scanner";
 import {StammdatenPage} from "../pages/stammdaten/stammdaten";
 import {MedikationsplanPage} from "../pages/medikationsplan/medikationsplan";
+import {RouterPage} from "../pages/router/router";
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +13,7 @@ import {MedikationsplanPage} from "../pages/medikationsplan/medikationsplan";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = RouterPage;
 
   pages: Array<{ title: string, component: any }>;
 

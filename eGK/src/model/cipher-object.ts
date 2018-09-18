@@ -1,0 +1,3 @@
+interface CipherObject {
+  data: string;
+}

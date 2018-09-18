@@ -8,6 +8,11 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Gesundheitskarte</h2>
-  <button ion-button secondary menuToggle>Menü öffnen</button>
+  <div text-center>
+    <h2>Gesundheitskarte</h2>
+    <p>{{fragment}}</p>
+    <button ion-button secondary menuToggle>Menü öffnen</button>
+    <br>
+    <button ion-button (click)='gotoScanner()'>Scan QR-Code</button>
+  </div>
 </ion-content>

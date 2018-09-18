@@ -8,5 +8,11 @@
 </ion-header>
 
 <ion-content padding>
-
+  <!--<img alt="loading..." src="assets/imgs/spinner.gif"
+       style="width:200px;position: fixed;top: 50%; left: 50%;transform: translate(-50%, -50%)">-->
+  <div text-center>
+    Daten werden geladen und entschlüsselt...
+    <p>{{rawData}}</p>
+    <div [innerHTML]="log"></div>
+  </div>
 </ion-content>

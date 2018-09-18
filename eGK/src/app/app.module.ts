@@ -11,6 +11,8 @@ import {GatewayConnectorProvider} from '../providers/gateway-connector/gateway-c
 import {TransientStoreProvider} from '../providers/transient-store/transient-store';
 import {HttpClientModule} from "@angular/common/http";
 import {CryptoControllerPage} from "../pages/crypto-controller/crypto-controller";
+import {PropertiesProvider} from '../providers/properties/properties';
+import {RouterPage} from "../pages/router/router";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import {CryptoControllerPage} from "../pages/crypto-controller/crypto-controller
     ScannerPage,
     StammdatenPage,
     MedikationsplanPage,
-    CryptoControllerPage
+    CryptoControllerPage,
+    RouterPage
   ],
   imports: [
     BrowserModule,
@@ -33,12 +36,14 @@ import {CryptoControllerPage} from "../pages/crypto-controller/crypto-controller
     ScannerPage,
     StammdatenPage,
     MedikationsplanPage,
-    CryptoControllerPage
+    CryptoControllerPage,
+    RouterPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GatewayConnectorProvider,
     TransientStoreProvider,
+    PropertiesProvider,
   ]
 })
 export class AppModule {
