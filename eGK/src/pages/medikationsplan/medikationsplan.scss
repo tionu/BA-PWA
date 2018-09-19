@@ -1,3 +1,13 @@
 page-medikationsplan {
-
+  ion-card-content .spacer {
+    margin-top: 1.2em;
+  }
+  .header-col {
+    min-width: 60px;
+    max-width: 60px;
+  }
+  #info div {
+    text-align: center;
+    margin-top: 1.6em;
+  }
 }

@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {TransientStoreProvider} from "../../providers/transient-store/transient-store";
 import {CryptoControllerPage} from "../crypto-controller/crypto-controller";
 
 declare var QRReader;
@@ -14,7 +13,7 @@ export class ScannerPage {
 
   log: string;
 
-  constructor(private persistence: TransientStoreProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.log = "";
   }
 
@@ -27,7 +26,6 @@ export class ScannerPage {
       this.stopScan()
       if (error) {
         this.log += "<br>QRReader: " + error;
-        this.navCtrl.setRoot(CryptoControllerPage, {fragment: "92542168-3174-407b-90ba-aec0686842be"});
       } else {
         let path = <string> result;
         let fragment: string;

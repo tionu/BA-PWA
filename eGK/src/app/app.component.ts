@@ -15,17 +15,17 @@ export class MyApp {
 
   rootPage: any = RouterPage;
 
-  pages: Array<{ title: string, component: any }>;
+  pages: Array<{ title: string, icon: string, component: any }>;
 
   constructor(public platform: Platform) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      {title: 'Start', component: HomePage},
-      {title: 'QR scannen...', component: ScannerPage},
-      {title: 'Stammdaten', component: StammdatenPage},
-      {title: 'Medikationsplan', component: MedikationsplanPage},
+      {title: 'Start', icon: 'radio-button-off', component: HomePage},
+      {title: 'QR scannen', icon: 'qr-scanner', component: ScannerPage},
+      {title: 'Stammdaten', icon: 'clipboard', component: StammdatenPage},
+      {title: 'Medikationsplan', icon: 'list', component: MedikationsplanPage},
     ];
 
   }

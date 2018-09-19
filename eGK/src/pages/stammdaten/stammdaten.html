@@ -8,5 +8,60 @@
 </ion-header>
 
 <ion-content padding>
-
+  <div [style.display]="error ? 'none' : 'block'">
+    <ion-card>
+      <ion-card-content>
+        {{anrede}}{{versicherter?.title}} {{versicherter?.givenName}} {{versicherter?.namenszusatz}}
+        {{versicherter?.vorsatzwort}} {{versicherter?.surname}}<br>
+        <div class="spacer">
+          {{versicherter?.streetname}} {{versicherter?.housenumber}}<br>
+          {{versicherter?.zip}} {{versicherter?.city}}
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-grid no-padding>
+          <ion-row>
+            <ion-col class="header-col">
+              <div>Geburtsdatum:</div>
+            </ion-col>
+            <ion-col>
+              <div>{{geburtstag}}</div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="header-col">
+              <div>Versichertennr.:</div>
+            </ion-col>
+            <ion-col>
+              <div>{{versicherter?.healthInsuranceNumber}}</div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="header-col">
+              <div>Krankenkasse:</div>
+            </ion-col>
+            <ion-col>
+              <div>{{versicherter?.healthInsuranceProviderName}}</div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="header-col">
+              <div>Kassennummer:</div>
+            </ion-col>
+            <ion-col>
+              <div>{{versicherter?.healthInsuranceProviderNumber}}</div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div id="info" [style.display]="error ? 'block' : 'none'">
+    <div>{{error}}</div>
+    <div>
+      <button ion-button (click)='gotoScanner()'>QR scannen</button>
+    </div>
+  </div>
 </ion-content>

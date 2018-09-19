@@ -9,7 +9,7 @@ export class GatewayConnectorProvider {
   }
 
   get(uuid: string) {
-    let params = new HttpParams().set('uuid', uuid).set('responseType', 'text');
+    let params = new HttpParams().set('uuid', uuid);
     return this.http.get<CipherObject>(this.properties.value['gateway.server'], {params: params})
   }
 

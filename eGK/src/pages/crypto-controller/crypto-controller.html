@@ -3,16 +3,21 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>CryptoController</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <!--<img alt="loading..." src="assets/imgs/spinner.gif"
-       style="width:200px;position: fixed;top: 50%; left: 50%;transform: translate(-50%, -50%)">-->
-  <div text-center>
-    Daten werden geladen und entschlüsselt...
-    <p>{{rawData}}</p>
-    <div [innerHTML]="log"></div>
+  <div id="info">
+    <div [style.display]="error ? 'none' : 'block'">
+      <p>entschlüsseln...</p>
+      <img alt="loading..." src="assets/imgs/spinner.gif"
+           style="width:200px;position: fixed;top: 50%; left: 50%;transform: translate(-50%, -50%)">
+    </div>
+    <div [style.display]="error ? 'block' : 'none'">
+      <div>{{error}}</div>
+      <div>
+        <button ion-button (click)='gotoScanner()'>QR scannen</button>
+      </div>
+    </div>
   </div>
 </ion-content>

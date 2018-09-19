@@ -1,3 +1,4 @@
 interface CipherObject {
-  data: string;
+  ciphertext: string;
+  nonce: string;
 }

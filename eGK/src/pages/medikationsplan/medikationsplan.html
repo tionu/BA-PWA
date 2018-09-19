@@ -8,5 +8,45 @@
 </ion-header>
 
 <ion-content padding>
-
+  <div [style.display]="error ? 'none' : 'block'">
+    <ion-card>
+      <ion-card-header>
+        Erstellt von:
+      </ion-card-header>
+      <ion-card-content>
+        {{medikationsplan?.ersteller?.name}}<br>
+        am: {{medikationsplan?.ersteller?.erstelldatum}}
+        <div class="spacer">
+          {{medikationsplan?.ersteller?.strasse}}<br>
+          {{medikationsplan?.ersteller?.postleitzahl}} {{medikationsplan?.ersteller?.ort}}
+        </div>
+        <div class="spacer">
+          <ion-grid no-padding>
+            <ion-row>
+              <ion-col class="header-col">
+                <div>Telefon:</div>
+              </ion-col>
+              <ion-col>
+                <div>{{medikationsplan?.ersteller?.telefon}}</div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="header-col">
+                <div>E-Mail:</div>
+              </ion-col>
+              <ion-col>
+                <div> {{medikationsplan?.ersteller?.email}}</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div id="info" [style.display]="error ? 'block' : 'none'">
+    <div>{{error}}</div>
+    <div>
+      <button ion-button (click)='gotoScanner()'>QR scannen</button>
+    </div>
+  </div>
 </ion-content>

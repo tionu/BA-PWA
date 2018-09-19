@@ -1,3 +1,17 @@
 page-stammdaten {
+  ion-card-header {
+    text-align: center;
+  }
 
+  ion-card-content .spacer {
+    margin-top: 1.2em;
+  }
+  .header-col {
+    min-width: 115px;
+    max-width: 115px;
+  }
+  #info div {
+    text-align: center;
+    margin-top: 1.6em;
+  }
 }
