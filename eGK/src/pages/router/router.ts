@@ -10,7 +10,7 @@ import {HomePage} from "../home/home";
 export class RouterPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    if (location.hash && location.hash.length == 61) {
+    if (location.hash && location.hash.length >= 61) {
       let fragment = location.hash.substring(1);
       let baseUrl = location.href.split("#")[0];
       window.history.replaceState("", document.title, baseUrl)
