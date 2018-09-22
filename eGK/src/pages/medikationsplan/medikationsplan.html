@@ -72,8 +72,8 @@
     </ion-card>
     <div *ngIf="plan?.block">
       <div *ngFor="let block of plan.block">
-        <ion-card *ngIf="block.zwischenueberschriftFreitext">
-          <ion-card-header>
+        <ion-card>
+          <ion-card-header *ngIf="block.zwischenueberschriftFreitext">
             {{block.zwischenueberschriftFreitext}}:
           </ion-card-header>
           <ion-card-content>
@@ -146,17 +146,9 @@
                         <div> {{item.hinweise}}</div>
                       </ion-col>
                     </ion-row>
-                    <ion-row *ngIf="item.pharmazentralnummer">
-                      <ion-col class="medikament-col">
-                        <div>PZN:</div>
-                      </ion-col>
-                      <ion-col>
-                        <div> {{item.pharmazentralnummer}}</div>
-                      </ion-col>
-                    </ion-row>
                     <ion-row *ngIf="item.zusatzzeile">
                       <ion-col>
-                        <div> {{item.pha}}</div>
+                        <div> {{item.zusatzzeile}}</div>
                       </ion-col>
                     </ion-row>
                   </ion-grid>

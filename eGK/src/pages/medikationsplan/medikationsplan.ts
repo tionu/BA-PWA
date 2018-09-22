@@ -21,9 +21,6 @@ export class MedikationsplanPage {
     }
   }
 
-  ionViewDidLoad() {
-  }
-
   gotoScanner() {
     this.navCtrl.push(ScannerPage);
   }
