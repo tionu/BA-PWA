@@ -9,16 +9,16 @@
 
 <ion-content padding>
   <div [style.display]="error ? 'none' : 'block'">
-    <ion-card>
+    <ion-card *ngIf="plan?.ersteller">
       <ion-card-header>
         Erstellt von:
       </ion-card-header>
       <ion-card-content>
-        {{medikationsplan?.ersteller?.name}}<br>
-        am: {{medikationsplan?.ersteller?.erstelldatum}}
+        {{plan.ersteller.name}}<br>
+        am: {{plan.ersteller.erstelldatum}}
         <div class="spacer">
-          {{medikationsplan?.ersteller?.strasse}}<br>
-          {{medikationsplan?.ersteller?.postleitzahl}} {{medikationsplan?.ersteller?.ort}}
+          {{plan.ersteller.strasse}}<br>
+          {{plan.ersteller.postleitzahl}} {{plan.ersteller.ort}}
         </div>
         <div class="spacer">
           <ion-grid no-padding>
@@ -27,7 +27,7 @@
                 <div>Telefon:</div>
               </ion-col>
               <ion-col>
-                <div>{{medikationsplan?.ersteller?.telefon}}</div>
+                <div>{{plan.ersteller.telefon}}</div>
               </ion-col>
             </ion-row>
             <ion-row>
@@ -35,13 +35,140 @@
                 <div>E-Mail:</div>
               </ion-col>
               <ion-col>
-                <div> {{medikationsplan?.ersteller?.email}}</div>
+                <div> {{plan.ersteller.email}}</div>
               </ion-col>
             </ion-row>
           </ion-grid>
         </div>
       </ion-card-content>
     </ion-card>
+    <ion-card *ngIf="plan?.parameter">
+      <ion-card-header>
+        Hinweise:
+      </ion-card-header>
+      <ion-card-content>
+        <p *ngIf="plan.parameter.allergienUnvertraeglichkeiten">
+          Allergien/Unverträglichkeiten: {{plan.parameter.allergienUnvertraeglichkeiten}}
+        </p>
+        <p *ngIf="plan.parameter.schwanger">
+          Schwangerschaft: {{plan.parameter.schwanger}}
+        </p>
+        <p *ngIf="plan.parameter.stillend">
+          stillend: {{plan.parameter.stillend}}
+        </p>
+        <p *ngIf="plan.parameter.gewicht">
+          Gewicht: {{plan.parameter.gewicht}}kg
+        </p>
+        <p *ngIf="plan.parameter.groesse">
+          Größe: {{plan.parameter.groesse}}cm
+        </p>
+        <p *ngIf="plan.parameter.kreatininwert">
+          Kreatininwert: {{plan.parameter.kreatininwert}}mg/dl
+        </p>
+        <p *ngIf="plan.parameter.parameterfreitext">
+          {{plan.parameter.parameterfreitext}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+    <div *ngIf="plan?.block">
+      <div *ngFor="let block of plan.block">
+        <ion-card *ngIf="block.zwischenueberschriftFreitext">
+          <ion-card-header>
+            {{block.zwischenueberschriftFreitext}}:
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <div *ngFor="let item of block.medikationFreitextRezeptur">
+                <ion-item text-wrap *ngIf="isMedikation(item)">
+                  <ion-grid no-padding>
+                    <ion-row *ngIf="item.handelsname">
+                      <ion-col class="medikament-col">
+                        <div>Name:</div>
+                      </ion-col>
+                      <ion-col>
+                        <div> {{item.handelsname}}</div>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="item.wirkstoff">
+                      <ion-col class="medikament-col">
+                        <div>Wirkstoff:</div>
+                      </ion-col>
+                      <ion-col>
+                        <div *ngFor="let wirkstoff of item.wirkstoff">{{wirkstoff.wirkstoff}}
+                          {{wirkstoff.wirkstaerke}}
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="item.darreichungsformFreitext">
+                      <ion-col class="medikament-col">
+                        <div>Form:</div>
+                      </ion-col>
+                      <ion-col>
+                        <div> {{item.darreichungsformFreitext}}</div>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row
+                      *ngIf="item.dosierschemaMorgens || item.dosierschemaMittags || item.dosierschemaAbends|| item.dosierschemaNachts|| item.dosierschemaFreitext">
+                      <ion-col class="medikament-col">
+                        <div>Einnahme:</div>
+                      </ion-col>
+                      <ion-col>
+                        <div class="einnahme" *ngIf="item.dosierschemaMorgens">{{item.dosierschemaMorgens}}&nbsp;{{item.dosiereinheitFreitext}}&nbsp;morgens
+                          <span class="einnahme"
+                                *ngIf="item.dosierschemaMittags || item.dosierschemaAbends || item.dosierschemaNachts">{{einnahmeTrenner}}</span>
+                        </div>
+                        <div class="einnahme" *ngIf="item.dosierschemaMittags">{{item.dosierschemaMittags}}&nbsp;{{item.dosiereinheitFreitext}}&nbsp;mittags
+                          <span
+                            class="einnahme" *ngIf="item.dosierschemaAbends || item.dosierschemaNachts">{{einnahmeTrenner}}</span>
+                        </div>
+                        <div class="einnahme" *ngIf="item.dosierschemaAbends">{{item.dosierschemaAbends}}&nbsp;{{item.dosiereinheitFreitext}}&nbsp;abends
+                          <span
+                            class="einnahme" *ngIf="item.dosierschemaNachts">{{einnahmeTrenner}}</span>
+                        </div>
+                        <div class="einnahme" *ngIf="item.dosierschemaNachts">{{item.dosierschemaNachts}}&nbsp;{{item.dosiereinheitFreitext}}&nbsp;nachts
+                        </div>
+                        <div *ngIf="item.dosierschemaFreitext"> {{item.dosierschemaFreitext}}</div>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="item.behandlungsgrund">
+                      <ion-col class="medikament-col">
+                        <div>Grund:</div>
+                      </ion-col>
+                      <ion-col>
+                        <div> {{item.behandlungsgrund}}</div>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="item.hinweise">
+                      <ion-col class="medikament-col">
+                        <div>Hinweis:</div>
+                      </ion-col>
+                      <ion-col>
+                        <div> {{item.hinweise}}</div>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="item.pharmazentralnummer">
+                      <ion-col class="medikament-col">
+                        <div>PZN:</div>
+                      </ion-col>
+                      <ion-col>
+                        <div> {{item.pharmazentralnummer}}</div>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="item.zusatzzeile">
+                      <ion-col>
+                        <div> {{item.pha}}</div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-item>
+                <ion-item text-wrap *ngIf="isRezeptur(item)">Rezeptur: {{item.freitext}}{{item.zusatzzeile}}</ion-item>
+                <ion-item text-wrap *ngIf="isFreitextzeile(item)">{{item.freitext}}</ion-item>
+              </div>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
   </div>
   <div id="info" [style.display]="error ? 'block' : 'none'">
     <div>{{error}}</div>

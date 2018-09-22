@@ -1,13 +1,35 @@
 page-medikationsplan {
-  ion-card-content .spacer {
+  .card-content {
+    padding-right: 2px;
+    padding-left: 14px;
+  }
+
+  .spacer {
     margin-top: 1.2em;
   }
+
   .header-col {
     min-width: 60px;
     max-width: 60px;
   }
+
+  .medikament-col {
+    min-width: 74px;
+    max-width: 74px;
+  }
+
+  .einnahme {
+    display: inline;
+  }
+
   #info div {
     text-align: center;
     margin-top: 1.6em;
   }
+
+  .card .list .item {
+    border-top: 1px solid color($colors, light, base);
+    padding-left: 0;
+  }
+
 }

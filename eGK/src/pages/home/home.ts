@@ -11,6 +11,9 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
   }
 
+  ionViewDidLoad() {
+  }
+
   gotoScanner() {
     this.navCtrl.push(ScannerPage);
   }

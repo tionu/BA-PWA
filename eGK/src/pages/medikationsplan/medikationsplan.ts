@@ -9,23 +9,36 @@ import {ScannerPage} from "../scanner/scanner";
 })
 export class MedikationsplanPage {
 
-  medikationsplan: MedikationsPlan;
+  plan: MedikationsPlan;
   error: string;
+  einnahmeTrenner = "|";
 
   constructor(private store: TransientStoreProvider, public navCtrl: NavController, public navParams: NavParams) {
-    if (store.egk && store.egk.medikationsplan) {
-      this.medikationsplan = store.egk.medikationsplan;
+    if (this.store.egk && store.egk.medikationsplan) {
+      this.plan = store.egk.medikationsplan;
     } else {
       this.error = "Keine Daten vorhanden.";
     }
   }
 
   ionViewDidLoad() {
-    console.log(this.medikationsplan);
   }
 
   gotoScanner() {
     this.navCtrl.push(ScannerPage);
+  }
+
+
+  isMedikation(item: any): item is Medikation {
+    return item && ('pharmazentralnummer' in item);
+  }
+
+  isRezeptur(item: any): item is Rezeptur {
+    return item && ('freitext' in item) && ('zusatzzeile' in item);
+  }
+
+  isFreitextzeile(item: any): item is Freitextzeile {
+    return item && ('freitext' in item);
   }
 
 }
