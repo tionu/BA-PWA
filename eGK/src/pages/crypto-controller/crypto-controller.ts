@@ -5,7 +5,7 @@ import {TransientStoreProvider} from "../../providers/transient-store/transient-
 import {ScannerPage} from "../scanner/scanner";
 import {decode} from "base64-arraybuffer";
 import {TextDecoder} from "text-encoding-utf-8";
-import {MedikationsplanPage} from "../medikationsplan/medikationsplan";
+import {StammdatenPage} from "../stammdaten/stammdaten";
 
 @Component({
   selector: 'page-crypto-controller',
@@ -43,7 +43,7 @@ export class CryptoControllerPage {
       .then(secretKey => {
         crypto.subtle.decrypt({name: "aes-gcm", iv: nonce}, secretKey, cipherText).then(plainText => {
           this.store.egk = JSON.parse(TextDecoder('UTF-8').decode(new Uint8Array(plainText)));
-          this.navCtrl.setRoot(MedikationsplanPage);
+          this.navCtrl.setRoot(StammdatenPage);
         })
       });
   }
