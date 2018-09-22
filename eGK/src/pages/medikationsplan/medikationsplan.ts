@@ -11,7 +11,6 @@ export class MedikationsplanPage {
 
   plan: MedikationsPlan;
   error: string;
-  einnahmeTrenner = "|";
 
   constructor(private store: TransientStoreProvider, public navCtrl: NavController, public navParams: NavParams) {
     if (this.store.egk && store.egk.medikationsplan) {

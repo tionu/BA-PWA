@@ -23,7 +23,7 @@
         <div class="spacer">
           <ion-grid no-padding>
             <ion-row>
-              <ion-col class="header-col">
+              <ion-col class="first-col">
                 <div>Telefon:</div>
               </ion-col>
               <ion-col>
@@ -31,7 +31,7 @@
               </ion-col>
             </ion-row>
             <ion-row>
-              <ion-col class="header-col">
+              <ion-col class="first-col">
                 <div>E-Mail:</div>
               </ion-col>
               <ion-col>
@@ -73,7 +73,7 @@
     <div *ngIf="plan?.block">
       <div *ngFor="let block of plan.block">
         <ion-card>
-          <ion-card-header *ngIf="block.zwischenueberschriftFreitext">
+          <ion-card-header text-wrap *ngIf="block.zwischenueberschriftFreitext">
             {{block.zwischenueberschriftFreitext}}:
           </ion-card-header>
           <ion-card-content>
@@ -82,7 +82,7 @@
                 <ion-item text-wrap *ngIf="isMedikation(item)">
                   <ion-grid no-padding>
                     <ion-row *ngIf="item.handelsname">
-                      <ion-col class="medikament-col">
+                      <ion-col class="first-col">
                         <div>Name:</div>
                       </ion-col>
                       <ion-col>
@@ -90,7 +90,7 @@
                       </ion-col>
                     </ion-row>
                     <ion-row *ngIf="item.wirkstoff">
-                      <ion-col class="medikament-col">
+                      <ion-col class="first-col">
                         <div>Wirkstoff:</div>
                       </ion-col>
                       <ion-col>
@@ -100,7 +100,7 @@
                       </ion-col>
                     </ion-row>
                     <ion-row *ngIf="item.darreichungsformFreitext">
-                      <ion-col class="medikament-col">
+                      <ion-col class="first-col">
                         <div>Form:</div>
                       </ion-col>
                       <ion-col>
@@ -109,29 +109,27 @@
                     </ion-row>
                     <ion-row
                       *ngIf="item.dosierschemaMorgens || item.dosierschemaMittags || item.dosierschemaAbends|| item.dosierschemaNachts|| item.dosierschemaFreitext">
-                      <ion-col class="medikament-col">
+                      <ion-col class="first-col">
                         <div>Einnahme:</div>
                       </ion-col>
                       <ion-col>
-                        <div class="einnahme" *ngIf="item.dosierschemaMorgens">{{item.dosierschemaMorgens}}&nbsp;{{item.dosiereinheitFreitext}}&nbsp;morgens
-                          <span class="einnahme"
-                                *ngIf="item.dosierschemaMittags || item.dosierschemaAbends || item.dosierschemaNachts">{{einnahmeTrenner}}</span>
-                        </div>
-                        <div class="einnahme" *ngIf="item.dosierschemaMittags">{{item.dosierschemaMittags}}&nbsp;{{item.dosiereinheitFreitext}}&nbsp;mittags
-                          <span
-                            class="einnahme" *ngIf="item.dosierschemaAbends || item.dosierschemaNachts">{{einnahmeTrenner}}</span>
-                        </div>
-                        <div class="einnahme" *ngIf="item.dosierschemaAbends">{{item.dosierschemaAbends}}&nbsp;{{item.dosiereinheitFreitext}}&nbsp;abends
-                          <span
-                            class="einnahme" *ngIf="item.dosierschemaNachts">{{einnahmeTrenner}}</span>
-                        </div>
-                        <div class="einnahme" *ngIf="item.dosierschemaNachts">{{item.dosierschemaNachts}}&nbsp;{{item.dosiereinheitFreitext}}&nbsp;nachts
-                        </div>
-                        <div *ngIf="item.dosierschemaFreitext"> {{item.dosierschemaFreitext}}</div>
+                        <div *ngIf="item.dosierschemaMorgens">{{item.dosierschemaMorgens}}&nbsp;{{item.dosiereinheitFreitext}}&nbsp;morgens</div>
+                        <div *ngIf="item.dosierschemaMittags">{{item.dosierschemaMittags}}&nbsp;{{item.dosiereinheitFreitext}}&nbsp;mittags</div>
+                        <div *ngIf="item.dosierschemaAbends">{{item.dosierschemaAbends}}&nbsp;{{item.dosiereinheitFreitext}}&nbsp;abends</div>
+                        <div *ngIf="item.dosierschemaNachts">{{item.dosierschemaNachts}}&nbsp;{{item.dosiereinheitFreitext}}&nbsp;nachts</div>
+                        <div *ngIf="item.dosierschemaFreitext">{{item.dosierschemaFreitext}}</div>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="item.dosierschemaFreitext && item.dosiereinheitFreitext">
+                      <ion-col class="first-col">
+                        <div>Einheit:</div>
+                      </ion-col>
+                      <ion-col>
+                        <div> {{item.dosiereinheitFreitext}}</div>
                       </ion-col>
                     </ion-row>
                     <ion-row *ngIf="item.behandlungsgrund">
-                      <ion-col class="medikament-col">
+                      <ion-col class="first-col">
                         <div>Grund:</div>
                       </ion-col>
                       <ion-col>
@@ -139,7 +137,7 @@
                       </ion-col>
                     </ion-row>
                     <ion-row *ngIf="item.hinweise">
-                      <ion-col class="medikament-col">
+                      <ion-col class="first-col">
                         <div>Hinweis:</div>
                       </ion-col>
                       <ion-col>
