@@ -14,6 +14,8 @@ self.toolbox.options.cache = {
 // pre-cache our key assets
 self.toolbox.precache(
   [
+    './assets/js/qrscan.js',
+    './assets/js/zbar-decoder.min.js',
     './build/main.js',
     './build/vendor.js',
     './build/main.css',
